@@ -1,0 +1,1645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farhaan | AI Engineer Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #0fccce;
+            --accent-dark: #0db9bb;
+            --text: #e6e6e6;
+            --text-light: #a0a0a0;
+            --card-bg: rgba(30, 30, 46, 0.7);
+            --card-border: rgba(255, 255, 255, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--card-border);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 100px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(15, 204, 206, 0.1) 0%, rgba(15, 204, 206, 0) 70%);
+            top: 10%;
+            right: 10%;
+            z-index: -1;
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .hero-text {
+            max-width: 600px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero h1 span {
+            color: var(--accent);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+        
+        .profile-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .profile-img-container {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid var(--accent);
+            box-shadow: 0 10px 30px rgba(15, 204, 206, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--card-bg);
+        }
+        
+        .profile-img-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--text-light);
+        }
+        
+        .profile-img-placeholder i {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--accent);
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid var(--accent);
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: transparent;
+            color: var(--accent);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--accent);
+            margin-left: 15px;
+        }
+        
+        .btn-outline:hover {
+            background: var(--accent);
+            color: var(--primary);
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: var(--accent);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+        
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .stat {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--card-border);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .stat:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 5px;
+        }
+        
+        .stat-text {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        /* Experience Section */
+        .experience-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .tab-btn {
+            padding: 12px 25px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            color: var(--text);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .tab-btn.active {
+            background: var(--accent);
+            color: var(--primary);
+            border-color: var(--accent);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .experience-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 30px;
+            border: 1px solid var(--card-border);
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+        
+        .experience-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .experience-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+        
+        .experience-card ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .experience-card li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .experience-card li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+        
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .skill-category {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 30px;
+            border: 1px solid var(--card-border);
+            transition: transform 0.3s;
+        }
+        
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+        
+        .skill-category h3 {
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+        
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .skill-item {
+            background: rgba(15, 204, 206, 0.1);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(15, 204, 206, 0.3);
+            transition: all 0.3s;
+        }
+        
+        .skill-item:hover {
+            background: rgba(15, 204, 206, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        /* Projects Showcase Section */
+        .projects-showcase {
+            padding: 80px 0;
+        }
+        
+        .showcase-filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 10px 20px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            color: var(--text);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .filter-btn.active {
+            background: var(--accent);
+            color: var(--primary);
+            border-color: var(--accent);
+        }
+        
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .showcase-item {
+            background: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--card-border);
+            transition: transform 0.3s;
+        }
+        
+        .showcase-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .showcase-img {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .showcase-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .showcase-item:hover .showcase-img img {
+            transform: scale(1.05);
+        }
+        
+        .showcase-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 204, 206, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .showcase-item:hover .showcase-overlay {
+            opacity: 1;
+        }
+        
+        .showcase-content {
+            padding: 25px;
+        }
+        
+        .showcase-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+        
+        .showcase-content p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .showcase-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .tech-tag {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+        
+        /* Project Detail Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            overflow-y: auto;
+            padding: 20px;
+        }
+        
+        .modal-content {
+            background: var(--card-bg);
+            max-width: 900px;
+            margin: 50px auto;
+            border-radius: 10px;
+            border: 1px solid var(--card-border);
+            position: relative;
+            animation: modalFadeIn 0.3s ease;
+        }
+        
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.5rem;
+            color: var(--text);
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 10;
+        }
+        
+        .modal-header {
+            padding: 30px 30px 20px;
+            border-bottom: 1px solid var(--card-border);
+        }
+        
+        .modal-header h2 {
+            color: var(--accent);
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .modal-body {
+            padding: 30px;
+        }
+        
+        .project-detail-section {
+            margin-bottom: 30px;
+        }
+        
+        .project-detail-section h3 {
+            color: var(--accent);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        .project-detail-section p {
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+        
+        .project-detail-section ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .project-detail-section li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .project-detail-section li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .metric-card {
+            background: rgba(15, 204, 206, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid rgba(15, 204, 206, 0.3);
+            transition: transform 0.3s;
+        }
+        
+        .metric-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 5px;
+        }
+        
+        .metric-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        .project-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            height: 180px;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: transform 0.3s;
+        }
+        
+        .contact-item:hover {
+            transform: translateX(5px);
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--card-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--accent);
+            border: 1px solid var(--card-border);
+        }
+        
+        .contact-form {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid var(--card-border);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            border-radius: 5px;
+            color: var(--text);
+            transition: all 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            padding: 50px 0 20px;
+            text-align: center;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background: var(--card-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text);
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 1px solid var(--card-border);
+        }
+        
+        .social-links a:hover {
+            background: var(--accent);
+            color: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--card-border);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero-content,
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .profile-image {
+                order: -1;
+                margin-bottom: 40px;
+            }
+            
+            .profile-img-container {
+                width: 280px;
+                height: 280px;
+            }
+            
+            .showcase-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .showcase-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                margin: 20px auto;
+            }
+            
+            .profile-img-container {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .project-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Farhaan</div>
+                <div class="nav-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#showcase">Projects</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>AI Engineer & <span>ML Specialist</span></h1>
+                    <p>Building intelligent systems that solve complex problems. Specializing in machine learning, natural language processing, and scalable AI solutions.</p>
+                    <div class="hero-btns">
+                        <a href="#showcase" class="btn">View My Work</a>
+                        <a href="#contact" class="btn btn-outline">Get In Touch</a>
+                    </div>
+                </div>
+                <div class="profile-image">
+                    <div class="profile-img-container" style="background-image: url(src/photo1.png); background-size: cover;">
+                        <!-- <div class="profile-img-placeholder">
+                            <i class="fas fa-user"></i>
+                            <p><img src="src\photo1.png" alt=""></p>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Transforming Ideas into Intelligent Solutions</h3>
+                    <p>I'm a passionate AI Engineer with a strong foundation in machine learning, deep learning, and software engineering. My journey in AI began with a fascination for how machines can learn and make decisions, leading me to build systems that solve real-world challenges.</p>
+                    <p>Graduated Information Technology Engineer from St. Francis Institute of Technology, I've dedicated myself to mastering cutting-edge AI technologies while building practical, production-ready systems that deliver measurable impact.</p>
+                    <p>My approach combines technical excellence with creative problem-solving, ensuring that every solution I build is not only technically sound but also user-centric and scalable.</p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <div class="stat-number">3+</div>
+                            <div class="stat-text">Production AI Systems</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">500+</div>
+                            <div class="stat-text">LeetCode Problems Solved</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">92%</div>
+                            <div class="stat-text">Average Model Accuracy</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">Top 0.03%</div>
+                            <div class="stat-text">National Ranking (Super 30)</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <!-- Additional profile image can go here if needed -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <div class="section-title">
+                <h2>Technical Experience</h2>
+            </div>
+            <div class="experience-tabs">
+                <button class="tab-btn active" data-tab="ai-projects">AI Projects</button>
+                <button class="tab-btn" data-tab="achievements">Achievements</button>
+                <button class="tab-btn" data-tab="education">Education</button>
+            </div>
+            <div class="tab-content active" id="ai-projects">
+                <div class="experience-card">
+                    <h3>Real Estate AI: RERA Project Intelligence System</h3>
+                    <ul>
+                        <li>Built end-to-end AI system scraping 44,000+ RERA projects using BeautifulSoup/Selenium</li>
+                        <li>Processed 2GB+ HTML into structured JSONL with 99% data quality through validation pipelines</li>
+                        <li>Engineered hybrid RAG combining FAISS (dense) and BM25 (sparse) retrieval with weighted fusion</li>
+                        <li>Achieved 92% accuracy on complex real estate queries through micro-chunking strategy</li>
+                        <li>Developed adaptive query router classifying 10+ query types with dynamic parameters</li>
+                        <li>Reduced irrelevant results by 45% through intelligent retrieval strategy selection</li>
+                    </ul>
+                </div>
+                <div class="experience-card">
+                    <h3>MindVault: A Second Brain to store, retrieve, and query</h3>
+                    <ul>
+                        <li>Architected a unified data ingestion hub to consolidate heterogeneous data into a single, queryable "Second Brain"</li>
+                        <li>Implemented AI-powered semantic search using SentenceTransformers</li>
+                        <li>Achieved 98.3% query success rate with TF-IDF + Cosine Similarity fusion</li>
+                        <li>Integrated an AI-driven summarization model using Flan-T5, improving accuracy to 92% (ROUGE-L)</li>
+                        <li>Optimized Flask backend with Firebase, handling 3K+ documents with <500ms latency</li>
+                        <li>Engineered an image captioning module using BLIP Transformer, achieving 88% BLEU-4 accuracy</li>
+                    </ul>
+                </div>
+                <div class="experience-card">
+                    <h3>Emporium: Full-Stack E-Commerce Platform for Ethnic Wear</h3>
+                    <ul>
+                        <li>Pioneered a custom product request pipeline transforming the platform into a personalized sourcing service</li>
+                        <li>Engineered high-performance product discovery with optimized filtering algorithms</li>
+                        <li>Ensured sub-second response times for growing inventory using QuickSort and Binary Search</li>
+                        <li>Enhanced search usability by 40% with prefix-based autocomplete system</li>
+                        <li>Optimized operational backend with Priority Queue for order processing</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="tab-content" id="achievements">
+                <div class="experience-card">
+                    <h3>Super 30 Selection</h3>
+                    <ul>
+                        <li>Selected among the top 30 nationwide from 100,000+ applicants for the prestigious Super 30 (Rahmani 30) program</li>
+                        <li>Recognized for exceptional problem-solving skills and academic potential</li>
+                    </ul>
+                </div>
+                <div class="experience-card">
+                    <h3>Competitive Exam Performance</h3>
+                    <ul>
+                        <li>Scored 95 percentile in MHT-CET among 200,000+ engineering aspirants</li>
+                        <li>Achieved 91 percentile in JEE Mains, demonstrating strong fundamentals in mathematics and science</li>
+                    </ul>
+                </div>
+                <div class="experience-card">
+                    <h3>Academic Excellence</h3>
+                    <ul>
+                        <li>Ranked among the Top 3 in college with consistent academic performance</li>
+                        <li>Received merit-based scholarship for outstanding academic achievements</li>
+                    </ul>
+                </div>
+                <div class="experience-card">
+                    <h3>Problem Solving</h3>
+                    <ul>
+                        <li>Solved over 500+ problems on LeetCode (Farhaan_313) across various difficulty levels</li>
+                        <li>Strong foundation in data structures, algorithms, and system design</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="tab-content" id="education">
+                <div class="experience-card">
+                    <h3>St Francis Institute of Technology</h3>
+                    <ul>
+                        <li>Bachelor of Engineering in Information Technology</li>
+                        <li>CGPA: 7.7/10.0</li>
+                        <li>2021 - 2025 (Expected)</li>
+                        <li>Relevant Coursework: Machine Learning, Data Structures, Algorithms, Database Systems, Computer Networks</li>
+                    </ul>
+                </div>
+                <div class="experience-card">
+                    <h3>Central Board of Secondary Education</h3>
+                    <ul>
+                        <li>Percentage: 80%</li>
+                        <li>2018 - 2020</li>
+                        <li>Focus on Science and Mathematics with Computer Science as an elective</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <div class="section-title">
+                <h2>Technical Skills</h2>
+            </div>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>AI & Machine Learning</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">Machine Learning</div>
+                        <div class="skill-item">Natural Language Processing</div>
+                        <div class="skill-item">Computer Vision</div>
+                        <div class="skill-item">Transformers</div>
+                        <div class="skill-item">RAG Systems</div>
+                        <div class="skill-item">Semantic Search</div>
+                        <div class="skill-item">Data Mining</div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">Python</div>
+                        <div class="skill-item">Java</div>
+                        <div class="skill-item">JavaScript</div>
+                        <div class="skill-item">C</div>
+                        <div class="skill-item">HTML/CSS</div>
+                        <div class="skill-item">PHP</div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Frameworks & Libraries</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">React.js</div>
+                        <div class="skill-item">Node.js</div>
+                        <div class="skill-item">Flask</div>
+                        <div class="skill-item">SpringBoot</div>
+                        <div class="skill-item">JavaFX</div>
+                        <div class="skill-item">Hibernate ORM</div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Databases & Cloud</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">MongoDB</div>
+                        <div class="skill-item">MySQL</div>
+                        <div class="skill-item">Firebase</div>
+                        <div class="skill-item">AWS</div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools & Technologies</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">GitHub</div>
+                        <div class="skill-item">Docker</div>
+                        <div class="skill-item">VS Code</div>
+                        <div class="skill-item">Xampp</div>
+                        <div class="skill-item">Bash</div>
+                        <div class="skill-item">Excel</div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Core Competencies</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">Data Structures</div>
+                        <div class="skill-item">Algorithms</div>
+                        <div class="skill-item">Probability</div>
+                        <div class="skill-item">Statistics</div>
+                        <div class="skill-item">System Design</div>
+                        <div class="skill-item">Problem Solving</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Showcase Section -->
+    <section id="showcase" class="projects-showcase">
+        <div class="container">
+            <div class="section-title">
+                <h2>Project Showcase</h2>
+            </div>
+            <div class="showcase-filters">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="ai">AI/ML</button>
+                <button class="filter-btn" data-filter="web">Web Development</button>
+                <button class="filter-btn" data-filter="data">Data Engineering</button>
+            </div>
+            <div class="showcase-grid">
+                <!-- RERA Project -->
+                <div class="showcase-item" data-category="ai data">
+                    <div class="showcase-img">
+                        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="RERA Project Intelligence System">
+                        <div class="showcase-overlay">
+                            <button class="btn view-project-btn" data-project="rera">View Details</button>
+                        </div>
+                    </div>
+                    <div class="showcase-content">
+                        <h3>RERA Project Intelligence</h3>
+                        <p>AI system for real estate regulatory data with hybrid retrieval and 92% query accuracy.</p>
+                        <div class="showcase-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">FAISS</span>
+                            <span class="tech-tag">BM25</span>
+                            <span class="tech-tag">Selenium</span>
+                        </div>
+                        <button class="btn view-project-btn" data-project="rera">View Details</button>
+                    </div>
+                </div>
+                
+                <!-- MindVault Project -->
+                <div class="showcase-item" data-category="ai web">
+                    <div class="showcase-img">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="MindVault Second Brain">
+                        <div class="showcase-overlay">
+                            <button class="btn view-project-btn" data-project="mindvault">View Details</button>
+                        </div>
+                    </div>
+                    <div class="showcase-content">
+                        <h3>MindVault</h3>
+                        <p>Second Brain application with semantic search, summarization, and image captioning.</p>
+                        <div class="showcase-tech">
+                            <span class="tech-tag">Flask</span>
+                            <span class="tech-tag">Firebase</span>
+                            <span class="tech-tag">SentenceTransformers</span>
+                            <span class="tech-tag">Flan-T5</span>
+                        </div>
+                        <button class="btn view-project-btn" data-project="mindvault">View Details</button>
+                    </div>
+                </div>
+                
+                <!-- Emporium Project -->
+                <div class="showcase-item" data-category="web">
+                    <div class="showcase-img">
+                        <img src="src\emp-1.png" alt="Emporium E-Commerce">
+                        <div class="showcase-overlay">
+                            <button class="btn view-project-btn" data-project="emporium">View Details</button>
+                        </div>
+                    </div>
+                    <div class="showcase-content">
+                        <h3>Emporium E-Commerce</h3>
+                        <p>Full-stack ethnic wear platform with custom product requests and optimized search.</p>
+                        <div class="showcase-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">Algorithms</span>
+                        </div>
+                        <button class="btn view-project-btn" data-project="emporium">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Detail Modals -->
+    <div id="rera-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <div class="modal-header">
+                <h2>RERA Project Intelligence System</h2>
+                <p>AI-powered real estate regulatory data analysis platform</p>
+            </div>
+            <div class="modal-body">
+                <div class="project-detail-section">
+                    <h3>Project Overview</h3>
+                    <p>Built an end-to-end AI system that scrapes, processes, and analyzes RERA (Real Estate Regulatory Authority) project data to provide intelligent insights and query responses for real estate stakeholders.</p>
+                    
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">44,000+</div>
+                            <div class="metric-label">Projects Scraped</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">92%</div>
+                            <div class="metric-label">Query Accuracy</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">99%</div>
+                            <div class="metric-label">Data Quality</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">45%</div>
+                            <div class="metric-label">Reduced Irrelevant Results</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-detail-section">
+                    <h3>Project Gallery</h3>
+                    <div class="project-gallery">
+                        <div class="gallery-item">
+                            <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="RERA System Interface">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Data Processing Pipeline">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Query Results">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-detail-section">
+                    <h3>Technical Implementation</h3>
+                    <ul>
+                        <li>Developed web scraping pipeline using BeautifulSoup and Selenium to extract data from RERA portals</li>
+                        <li>Processed 2GB+ of HTML data into structured JSONL format with validation pipelines</li>
+                        <li>Engineered hybrid Retrieval-Augmented Generation (RAG) system combining FAISS (dense) and BM25 (sparse) retrieval</li>
+                        <li>Implemented weighted fusion algorithm to combine results from multiple retrieval methods</li>
+                        <li>Designed micro-chunking strategy to improve retrieval accuracy for complex queries</li>
+                        <li>Built adaptive query router that classifies 10+ query types and selects optimal retrieval strategy</li>
+                        <li>Optimized Sentence Transformers embeddings with GPU-accelerated batch processing</li>
+                    </ul>
+                </div>
+                
+                <div class="project-detail-section">
+                    <h3>Technologies Used</h3>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">BeautifulSoup</span>
+                        <span class="tech-tag">Selenium</span>
+                        <span class="tech-tag">FAISS</span>
+                        <span class="tech-tag">BM25</span>
+                        <span class="tech-tag">Sentence Transformers</span>
+                        <span class="tech-tag">GPU Acceleration</span>
+                        <span class="tech-tag">JSONL</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="mindvault-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <div class="modal-header">
+                <h2>MindVault: Your Second Brain</h2>
+                <p>Unified knowledge management system with AI-powered search and summarization</p>
+            </div>
+            <div class="modal-body">
+                <div class="project-detail-section">
+                    <h3>Project Overview</h3>
+                    <p>Architected a comprehensive "Second Brain" application that consolidates heterogeneous data sources (documents, bookmarks, tweets, images) into a single, queryable knowledge base with advanced AI capabilities.</p>
+                    
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">98.3%</div>
+                            <div class="metric-label">Query Success Rate</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">92%</div>
+                            <div class="metric-label">Summarization Accuracy</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">88%</div>
+                            <div class="metric-label">BLEU-4 Score</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">&lt;500ms</div>
+                            <div class="metric-label">Response Latency</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-detail-section">
+                    <h3>Project Gallery</h3>
+                    <div class="project-gallery">
+                        <div class="gallery-item">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="MindVault Interface">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Search Results">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Document Processing">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-detail-section">
+                    <h3>Key Features</h3>
+                    <ul>
+                        <li>Unified data ingestion hub for multiple data types and sources</li>
+                        <li>AI-powered semantic search using SentenceTransformers with TF-IDF + Cosine Similarity fusion</li>
+                        <li>Document summarization using Flan-T5 model with 92% ROUGE-L accuracy</li>
+                        <li>Image captioning module using BLIP Transformer with 88% BLEU-4 accuracy</li>
+                        <li>Optimized Flask backend integrated with Firebase for real-time data synchronization</li>
+                        <li>Handles 3,000+ documents with sub-500ms query response times</li>
+                        <li>Cross-platform compatibility with browser extensions and mobile access</li>
+                    </ul>
+                </div>
+                
+                <div class="project-detail-section">
+                    <h3>Technical Architecture</h3>
+                    <ul>
+                        <li>Backend: Flask with Firebase integration for authentication and data storage</li>
+                        <li>AI Models: SentenceTransformers for embeddings, Flan-T5 for summarization, BLIP for image captioning</li>
+                        <li>Search: Hybrid approach combining semantic search with traditional TF-IDF</li>
+                        <li>Database: Firebase Firestore for document metadata and user data</li>
+                        <li>Deployment: Docker containerization with optimized resource allocation</li>
+                    </ul>
+                </div>
+                
+                <div class="project-detail-section">
+                    <h3>Technologies Used</h3>
+                    <div class="project-tech">
+                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">SentenceTransformers</span>
+                        <span class="tech-tag">Flan-T5</span>
+                        <span class="tech-tag">BLIP Transformer</span>
+                        <span class="tech-tag">TF-IDF</span>
+                        <span class="tech-tag">Cosine Similarity</span>
+                        <span class="tech-tag">Docker</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="emporium-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <div class="modal-header">
+                <h2>Emporium: Ethnic Wear E-Commerce</h2>
+                <p>Full-stack e-commerce platform with custom product requests and optimized algorithms</p>
+            </div>
+            <div class="modal-body">
+                <div class="project-detail-section">
+                    <h3>Project Overview</h3>
+                    <p>Developed a comprehensive e-commerce platform specializing in ethnic wear, featuring a unique custom product request system and high-performance search and filtering capabilities.</p>
+                    
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">40%</div>
+                            <div class="metric-label">Search Usability Improvement</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">O(log N)</div>
+                            <div class="metric-label">Search Performance</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">O(N log N)</div>
+                            <div class="metric-label">Filtering Performance</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">100%</div>
+                            <div class="metric-label">Custom Request Fulfillment</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-detail-section">
+                    <h3>Project Gallery</h3>
+                    <div class="project-gallery">
+                        <div class="gallery-item">
+                            <img src="src\emp-1.png" alt="Emporium Homepage">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="src\emp-2.png" alt="Product Catalog">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="src\emp-3.png" alt="Custom Request Interface">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-detail-section">
+                    <h3>Innovative Features</h3>
+                    <ul>
+                        <li>Custom product request pipeline allowing users to submit designs via integrated interface</li>
+                        <li>Direct collaboration with artisans through social media API integrations</li>
+                        <li>Transformed standard e-commerce store into personalized sourcing service</li>
+                        <li>High-performance product discovery with optimized filtering algorithms</li>
+                        <li>Prefix-based autocomplete system improving search usability by 40%</li>
+                        <li>Priority-based order processing system for high-value and custom requests</li>
+                        <li>Real-time inventory management and order tracking</li>
+                    </ul>
+                </div>
+                
+                <div class="project-detail-section">
+                    <h3>Technical Implementation</h3>
+                    <ul>
+                        <li>Implemented QuickSort (O(N log N)) for product filtering and categorization</li>
+                        <li>Utilized Binary Search (O(log N)) for efficient product lookup</li>
+                        <li>Developed prefix-based autocomplete using efficient string-matching algorithms</li>
+                        <li>Built Priority Queue (O(log N)) system for order processing prioritization</li>
+                        <li>Integrated social media APIs for direct customer-artisan communication</li>
+                        <li>Designed responsive UI with React.js and optimized backend with Node.js</li>
+                        <li>Implemented secure payment gateway and order management system</li>
+                    </ul>
+                </div>
+                
+                <div class="project-detail-section">
+                    <h3>Technologies Used</h3>
+                    <div class="project-tech">
+                        <span class="tech-tag">React.js</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">QuickSort</span>
+                        <span class="tech-tag">Binary Search</span>
+                        <span class="tech-tag">Priority Queue</span>
+                        <span class="tech-tag">Social Media APIs</span>
+                        <span class="tech-tag">Payment Gateway</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get In Touch</h2>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h3>Phone</h3>
+                            <p>+91 8928036504</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h3>Email</h3>
+                            <p>farhaan.ai.engineer@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h3>Location</h3>
+                            <p>Mumbai, Maharashtra</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div>
+                            <h3>Resume</h3>
+                            <p><a href="#" style="color: var(--accent);">Download PDF</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="logo">Farhaan</div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-kaggle"></i></a>
+            </div>
+            <div class="copyright">
+                &copy; 2023 Farhaan. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab functionality for experience section
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active class from all buttons and contents
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    btn.classList.add('active');
+                    
+                    // Show corresponding content
+                    const tabId = btn.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // Filter functionality for project showcase
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const showcaseItems = document.querySelectorAll('.showcase-item');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active class from all filter buttons
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    btn.classList.add('active');
+                    
+                    const filterValue = btn.getAttribute('data-filter');
+                    
+                    showcaseItems.forEach(item => {
+                        if (filterValue === 'all' || item.getAttribute('data-category').includes(filterValue)) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Form submission
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Thank you for your message! I will get back to you soon.');
+                    contactForm.reset();
+                });
+            }
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Navbar background on scroll
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (window.scrollY > 100) {
+                    header.style.background = 'rgba(26, 26, 46, 0.98)';
+                } else {
+                    header.style.background = 'rgba(26, 26, 46, 0.95)';
+                }
+            });
+            
+            // Project modal functionality
+            const viewProjectBtns = document.querySelectorAll('.view-project-btn');
+            const modals = document.querySelectorAll('.modal');
+            const closeModalBtns = document.querySelectorAll('.close-modal');
+            
+            viewProjectBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const projectId = btn.getAttribute('data-project');
+                    const modal = document.getElementById(`${projectId}-modal`);
+                    if (modal) {
+                        modal.style.display = 'block';
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+            });
+            
+            closeModalBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const modal = btn.closest('.modal');
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                });
+            });
+            
+            // Close modal when clicking outside
+            window.addEventListener('click', (e) => {
+                modals.forEach(modal => {
+                    if (e.target === modal) {
+                        modal.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
