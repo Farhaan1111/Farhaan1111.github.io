@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <style>
         :root {
             --primary: #1a1a2e;
@@ -864,6 +865,123 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* Responsive Project Links Section */
+        .project-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .project-links .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            min-width: 140px;
+            text-align: center;
+        }
+
+        .project-links .btn i {
+            font-size: 1.1rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .project-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+            }
+
+            .project-links .btn {
+                width: 100%;
+                max-width: 280px;
+                padding: 14px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .project-links .btn {
+                padding: 12px 16px;
+                font-size: 0.9rem;
+            }
+
+            .project-links .btn i {
+                font-size: 1rem;
+            }
+        }
+
+        /* Mobile Navigation */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            background: rgba(26, 26, 46, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--card-border);
+            z-index: 999;
+            padding: 20px 0;
+        }
+
+        .mobile-nav.active {
+            display: block;
+        }
+
+        .mobile-nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            text-align: center;
+        }
+
+        .mobile-nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 12px 20px;
+            transition: all 0.3s;
+            border-radius: 5px;
+        }
+
+        .mobile-nav-links a:hover {
+            color: var(--accent);
+            background: rgba(15, 204, 206, 0.1);
+        }
+
+        /* Update existing responsive styles */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            /* Adjust header padding for mobile */
+            nav {
+                padding: 15px 0;
+            }
+        }
     </style>
 </head>
 
@@ -881,7 +999,20 @@
                     <a href="#showcase">Projects</a>
                     <a href="#contact">Contact</a>
                 </div>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
             </nav>
+            <div class="mobile-nav">
+                <div class="mobile-nav-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#showcase">Projects</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
         </div>
     </header>
 
@@ -1061,7 +1192,7 @@
                     <ul>
                         <li>Bachelor of Engineering in Information Technology</li>
                         <li>CGPA: 7.7/10.0</li>
-                        <li>2021 - 2025 (Expected)</li>
+                        <li>2021 - 2025</li>
                         <li>Relevant Coursework: Machine Learning, Data Structures, Algorithms, Database Systems,
                             Computer Networks</li>
                     </ul>
@@ -1226,9 +1357,11 @@
                         <h3>Emporium E-Commerce</h3>
                         <p>Full-stack ethnic wear platform with custom product requests and optimized search.</p>
                         <div class="showcase-tech">
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">PHP</span>
+                            <span class="tech-tag">MySQL</span>
                             <span class="tech-tag">Algorithms</span>
                         </div>
                         <button class="btn view-project-btn" data-project="emporium">View Details</button>
@@ -1338,13 +1471,15 @@
                         <span class="tech-tag">JSONL</span>
                     </div>
                 </div>
-                <div class="project-detail-section">
-                    <h3>Live Demo & Source Code</h3>
-                    <div class="project-links">
-                        <a href="https://tinylink-url.vercel.app" class="btn" target="_blank">Live Demo</a>
-                        <a href="https://github.com/Farhaan1111/tinylink" class="btn btn-outline" target="_blank">GitHub
-                            Repository</a>
-                    </div>
+                <div class="project-links">
+                    <a href="https://tinylink-url.vercel.app" class="btn" target="_blank">
+                        <i class="fas fa-external-link-alt"></i>
+                        Live Demo
+                    </a>
+                    <a href="https://github.com/Farhaan1111/Real-Estate-AI" class="btn btn-outline" target="_blank">
+                        <i class="fab fa-github"></i>
+                        GitHub Repository
+                    </a>
                 </div>
             </div>
         </div>
@@ -1441,13 +1576,15 @@
                         <span class="tech-tag">Docker</span>
                     </div>
                 </div>
-                <div class="project-detail-section">
-                    <h3>Live Demo & Source Code</h3>
-                    <div class="project-links">
-                        <a href="https://tinylink-url.vercel.app" class="btn" target="_blank">Live Demo</a>
-                        <a href="https://github.com/Farhaan1111/tinylink" class="btn btn-outline" target="_blank">GitHub
-                            Repository</a>
-                    </div>
+                <div class="project-links">
+                    <a href="#" class="btn" target="_blank">
+                        <i class="fas fa-external-link-alt"></i>
+                        Live Demo
+                    </a>
+                    <a href="https://github.com/Farhaan1111/mindvault" class="btn btn-outline" target="_blank">
+                        <i class="fab fa-github"></i>
+                        GitHub Repository
+                    </a>
                 </div>
             </div>
         </div>
@@ -1531,9 +1668,11 @@
                 <div class="project-detail-section">
                     <h3>Technologies Used</h3>
                     <div class="project-tech">
-                        <span class="tech-tag">React.js</span>
-                        <span class="tech-tag">Node.js</span>
-                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">PHP</span>
+                        <span class="tech-tag">MySQL</span>
                         <span class="tech-tag">QuickSort</span>
                         <span class="tech-tag">Binary Search</span>
                         <span class="tech-tag">Priority Queue</span>
@@ -1541,13 +1680,15 @@
                         <span class="tech-tag">Payment Gateway</span>
                     </div>
                 </div>
-                <div class="project-detail-section">
-                    <h3>Live Demo & Source Code</h3>
-                    <div class="project-links">
-                        <a href="https://tinylink-url.vercel.app" class="btn" target="_blank">Live Demo</a>
-                        <a href="https://github.com/Farhaan1111/tinylink" class="btn btn-outline" target="_blank">GitHub
-                            Repository</a>
-                    </div>
+                <div class="project-links">
+                    <a href="#" class="btn" target="_blank">
+                        <i class="fas fa-external-link-alt"></i>
+                        Live Demo
+                    </a>
+                    <a href="https://github.com/Farhaan1111/Emporium" class="btn btn-outline" target="_blank">
+                        <i class="fab fa-github"></i>
+                        GitHub Repository
+                    </a>
                 </div>
             </div>
         </div>
@@ -1644,13 +1785,15 @@
                     </div>
                 </div>
 
-                <div class="project-detail-section">
-                    <h3>Live Demo & Source Code</h3>
-                    <div class="project-links">
-                        <a href="https://tinylink-url.vercel.app" class="btn" target="_blank">Live Demo</a>
-                        <a href="https://github.com/Farhaan1111/tinylink" class="btn btn-outline" target="_blank">GitHub
-                            Repository</a>
-                    </div>
+                <div class="project-links">
+                    <a href="https://tinylink-url.vercel.app" class="btn" target="_blank">
+                        <i class="fas fa-external-link-alt"></i>
+                        Live Demo
+                    </a>
+                    <a href="https://github.com/Farhaan1111/tinylink" class="btn btn-outline" target="_blank">
+                        <i class="fab fa-github"></i>
+                        GitHub Repository
+                    </a>
                 </div>
             </div>
         </div>
@@ -1704,25 +1847,27 @@
                     </div>
                 </div>
                 <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" class="form-control" required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Send Message</button>
-                    </form>
+                    <div class="contact-form">
+    <form id="contactForm">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="from_name" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="from_email" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" class="form-control" required></textarea>
+        </div>
+        <button type="submit" class="btn">Send Message</button>
+    </form>
+</div>
                 </div>
             </div>
         </div>
@@ -1861,6 +2006,62 @@
                 });
             });
         });
+
+        // Mobile menu functionality
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mobileNav = document.querySelector('.mobile-nav');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileNav.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on links
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNav.classList.remove('active');
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.mobile-nav') && !e.target.closest('.mobile-menu-btn')) {
+                mobileNav.classList.remove('active');
+            }
+        });
+
+        // EmailJS Contact Form
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize EmailJS with your Public Key
+    emailjs.init("HdfqMSlPCezt90HTo");
+    
+    const contactForm = document.getElementById('contactForm');
+    
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const formData = {
+        from_name: document.getElementById('name').value,
+        from_email: document.getElementById('email').value,
+        subject: document.getElementById('subject').value,
+        message: document.getElementById('message').value
+    };
+    
+    console.log('Sending data:', formData);
+    
+    emailjs.send('farhaan123', 'template_107m34k', formData)
+        .then(function(response) {
+            console.log('SUCCESS!', response);
+            alert('Message sent successfully!');
+            contactForm.reset();
+        }, function(error) {
+            console.log('FAILED...', error);
+            alert('Error sending message: ' + JSON.stringify(error));
+        });
+});
+    }
+});
     </script>
 </body>
 
